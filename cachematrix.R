@@ -3,25 +3,25 @@
 ## it returns the cached value in case it had already calculated it 
 ## previously on the same matrix.
 makeCacheMatrix <- function(x = matrix()) {
-  # m is the cached result. It is initialized to NULL as there are
-  # no calculations cached yet.
-  m <- NULL
+  # "cachedinv" is the cached result. It is initialized to NULL as there
+  # are no calculations cached yet.
+  cachedinv <- NULL
   
-  # set is used to assign a matrix. As we have new data, we have to
-  # initialize the cache as it is not valid anymore.
+  # set is used to assign an initial matrix. As we have new data, we 
+  # have to initialize the cache as it is not valid anymore.
   set <- function(y) {
     x <<- y
-    m <<- NULL
+    cachedinv <<- NULL
   }
   
-  # get returns the matrix.
+  # get returns the initial matrix.
   get <- function() x
   
   # set inverse stores the inverted matrix in the cache
-  setinverse <- function(inverse) m <<- inverse
+  setinverse <- function(inverse) cachedinv <<- inverse
   
   # getinverse returns the cached inverted matrix
-  getinverse <- function() m
+  getinverse <- function() cachedinv
   
   # returns the functions created to set and get the matrix and to
   # set and get the inverted matrix
